@@ -1,16 +1,18 @@
-*{
+
+.login-container {
   /* 初始化 */
   margin: 0;
   padding: 0;
-}
-body{
   height: 100vh;
   /* 弹性布局 居中显示 */
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #e2e2e5;
-
+  /* 径向渐变背景 ellipse表示椭圆 */
+  background: radial-gradient(ellipse at center,#fffeea 0%,#fffeea 35%,#b7e8eb 100%);
+  /* 溢出隐藏 */
+  overflow: hidden;
+  text-align: center;
 }
 .container{
   width: 640px;
@@ -39,6 +41,9 @@ body{
   margin: 30px;
   line-height: 22px;
 }
+.left .left-top {
+  font-size: 18px;
+}
 @media screen and (max-width:520px){
   .container {
     width: 600px;
@@ -48,8 +53,11 @@ body{
     margin-left: 10%;
   }
   .left h1 {
-    font-size: 40px;
+    font-size: 30px;
     margin: 25px 20px 20px 20px;
+  }
+  .left .left-top {
+    font-size: 14px;
   }
 
 
@@ -82,12 +90,13 @@ body{
   border: none;
   outline: none;
   text-indent: 2px;
+
 }
 .form .ant-input-affix-wrapper {
   background-color: #364f67;
   border-color: #364f67;
-
 }
+
 .form .ant-input-affix-wrapper:hover {
   border-color: #1e65ce;
 
@@ -106,19 +115,6 @@ body{
 }
 
 
-*{
-  /* 初始化 */
-  margin: 0;
-  padding: 0;
-}
-body{
-  /* 100%窗口高度 */
-  height: 100vh;
-  /* 径向渐变背景 ellipse表示椭圆 */
-  background: radial-gradient(ellipse at center,#fffeea 0%,#fffeea 35%,#b7e8eb 100%);
-  /* 溢出隐藏 */
-  overflow: hidden;
-}
 /* 海平面 */
 .sea{
   width: 100%;
