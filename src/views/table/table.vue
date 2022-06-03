@@ -1,5 +1,5 @@
 <template>
-  <div>TABLE</div>
+  <div :style="{ background: '#fff', padding: '24px', minHeight: '280px' }">Content</div>
 </template>
 
 <script lang="ts">
