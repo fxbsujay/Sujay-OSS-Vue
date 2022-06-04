@@ -1,6 +1,11 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import Layout from "../layout/index.vue"
 
+/**
+ * <p>路由</p>
+ * @author fxbsujay@gmail.com
+ * @version 13:24 2022/6/3
+ */
 const routes: Array<RouteRecordRaw> = [
     {
         path: '/login',
@@ -26,9 +31,6 @@ const routes: Array<RouteRecordRaw> = [
 ]
 
 const router = createRouter({
-// createWebHashHistory hash 路由
-// createWebHistory history 路由
-// createMemoryHistory 带缓存 history 路由
     history: createWebHistory(),
     routes
 })

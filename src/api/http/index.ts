@@ -1,14 +1,28 @@
-import { RequestParams, Method, ContentType } from './type'
-import axios, { AxiosInstance, AxiosRequestConfig } from 'axios'
-import { Convert } from './json2Model'
+import {ContentType, Method, RequestParams} from './type'
+import axios, {AxiosInstance, AxiosRequestConfig} from 'axios'
+import {Convert} from './json2Model'
 import DuplicateRequest from './duplicate'
-import { message } from 'ant-design-vue'
+import {message} from 'ant-design-vue'
 import 'ant-design-vue/es/message/style/css'
+import {RootObject} from '../../model/RootObject'
+
+
+
+/**
+ * <p>axios封装</p>
+ * @author fxbsujay@gmail.com
+ * @version 13:24 2022/6/3
+ */
 export * from './type'
 
 export interface HttpClientConfig extends AxiosRequestConfig {
+  /**
+   * 参数体
+   */
   defaultParams?: RequestParams;
-  //click interval (点击间隔时间)
+  /**
+   * 请求间隔
+   */
   clickInterval?: number;
 }
 
@@ -24,7 +38,7 @@ export default class HttpClient {
   /**
    * @description: 封装请求类
    * @param {Method} method 请求方式
-   * @param {APIPath} path 请求路径
+   * @param {string} path 请求路径
    * @param {RequestParams} params 参数
    * @param {ContentType} contentType http配置
    * @param {RequestOptions} optionsSource
@@ -46,7 +60,7 @@ export default class HttpClient {
     if (headers) {
       headers['content-type'] = contentType;
     }
-    const allParams = Object.assign(
+    let allParams = Object.assign(
       {},
       this._defaultConfig.defaultParams,
       params
@@ -58,16 +72,18 @@ export default class HttpClient {
       headers,
     };
 
-    if (
-      DuplicateRequest.hashUrlAndParams(
-        requestConfig.url ?? '',
-        method,
-        allParams,
-        clickInterval
-      )
-    ) {
-      console.log('click quick');
-      return null;
+    if (DuplicateRequest.hashUrlAndParams(requestConfig.url ?? '', method, allParams, clickInterval)) {
+      return Promise.reject();
+    }
+
+    /**
+     * 防止请求缓存错乱
+     */
+    if (method === Method.GET) {
+      allParams = {
+        ...allParams,
+        ...{ _t: new Date().getTime() }
+      }
     }
 
     if (contentType === ContentType.form) {
@@ -78,18 +94,19 @@ export default class HttpClient {
     return this.httpClient
       .request(requestConfig)
       .then(res => {
-        console.log(res);
-
         const data: string = JSON.stringify(res.data);
         if (res.status >= 200 && res.status < 300) {
-          return Convert.jsonToModel(data) as T;
-        } else {
-          return Promise.reject(data);
+          let {code, data: result,msg } = Convert.jsonToModel(data) as RootObject<T>
+          if (code !== 200) {
+            return Promise.reject(msg);
+          }
+          return result as T;
         }
+        return Promise.reject('网络异常');
       })
       .catch(async error => {
-        message.info('This is a normal message')
-        return Promise.reject(error);
+        message.error(error)
+        return Promise.reject();
       });
   }
 }

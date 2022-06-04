@@ -52,16 +52,20 @@ export default defineComponent({
     const store = useStore()
 
     const loading = ref<boolean>(false)
-
     const state = ref<LoginModel>({
       username: '',
       password: '',
-      code: ''
+      code: '',
+      token: ''
     })
 
     const methods = reactive({
       login: async () => {
-        await store.dispatch(UserActionTypes.LOGIN, { username: '1', password: '2' })
+        loading.value = true
+        await store.dispatch(UserActionTypes.LOGIN, { username: state.value.username, password: state.value.password }).catch( res => {
+          loading.value = false
+        })
+
       }
     })
 
