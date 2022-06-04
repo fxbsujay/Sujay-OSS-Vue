@@ -24,7 +24,7 @@ export default {
                 commit('setToken', res?.data)
                 await router.replace('/')
             }).catch( async err => {
-                await router.replace('/')
+                console.log(err)
             })
         }
     }

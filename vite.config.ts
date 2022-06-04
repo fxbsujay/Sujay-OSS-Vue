@@ -14,6 +14,17 @@ export default defineConfig({
         resolvers: [AntDesignVueResolver()]
       })
   ],
+  server: {
+      open: true,
+      port: 4000,
+      proxy: {
+          '/api': {
+              target: 'http://localhost:8001',
+              changeOrigin: true,
+              rewrite: (path) => path.replace(/^\/api/, '')
+          }
+      }
+  },
   css: {
     preprocessorOptions: {
       less: {

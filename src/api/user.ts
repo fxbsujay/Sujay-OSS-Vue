@@ -7,5 +7,5 @@ import { Method, ContentType } from './http'
 
 export const loginRequest = (userInfo: RequestParams) => {
 
-    return https(false).request<RootObject<LoginModel>>('user/login', Method.POST, userInfo, ContentType.json)
+    return https(false).request<RootObject<LoginModel>>('auth/login', Method.POST, userInfo, ContentType.json)
 }
