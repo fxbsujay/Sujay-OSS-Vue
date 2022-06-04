@@ -6,10 +6,8 @@ import {message} from 'ant-design-vue'
 import 'ant-design-vue/es/message/style/css'
 import {RootObject} from '../../model/RootObject'
 
-
-
 /**
- * <p>axios封装</p>
+ * <p>Axios封装</p>
  * @author fxbsujay@gmail.com
  * @version 13:24 2022/6/3
  */

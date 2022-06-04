@@ -1,6 +1,6 @@
 import { createStore } from 'vuex'
 import app from './modules/app'
-
+import getters from './getters'
 /**
  * <p>VUEX 公用变量配置</p>
  * @author fxbsujay@gmail.com
@@ -9,7 +9,8 @@ import app from './modules/app'
 const store = createStore({
     modules: {
         app
-    }
+    },
+    getters
 })
 
 export default store;

@@ -13,7 +13,7 @@ export default {
     }),
     mutations: {
         setToken(state: any, token: string) {
-            setToken(state.token)
+            setToken(token)
         }
     },
     actions: {
