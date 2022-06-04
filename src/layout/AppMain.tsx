@@ -9,7 +9,10 @@ export default defineComponent({
      */
     setup() {
         return () => (
-            <router-view/>
+            <div class="app-main">
+                <router-view/>
+            </div>
+
         )
     }
 })

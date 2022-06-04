@@ -1,6 +1,6 @@
 <template>
   <a-layout class="layout">
-    <a-layout-header>
+    <a-layout-header :style="{ position: 'fixed', zIndex: 1, width: '100%' }">
       <div class="logo" />
       <a-menu
           v-model:selectedKeys="selectedKeys"
@@ -13,7 +13,7 @@
         <a-menu-item key="3">nav 3</a-menu-item>
       </a-menu>
     </a-layout-header>
-    <a-layout-content style="padding: 0 50px">
+    <a-layout-content :style="{ padding: '0 50px', marginTop: '64px' }">
       <a-breadcrumb style="margin: 16px 0">
         <a-breadcrumb-item>Home</a-breadcrumb-item>
         <a-breadcrumb-item>List</a-breadcrumb-item>
@@ -21,7 +21,7 @@
       </a-breadcrumb>
       <app-main></app-main>
     </a-layout-content>
-    <a-layout-footer style="text-align: center">
+    <a-layout-footer :style="{ textAlign: 'center' }">
       Ant Design ©2018 Created by Ant UED
     </a-layout-footer>
   </a-layout>
@@ -43,7 +43,3 @@ export default defineComponent({
 })
 
 </script>
-
-<style scoped>
-
-</style>
