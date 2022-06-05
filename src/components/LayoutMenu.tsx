@@ -1,4 +1,4 @@
-import { defineComponent,toRef } from 'vue'
+import { defineComponent } from 'vue'
 import { AsyncRoutes } from '../router'
 import { RouteRecordRaw } from 'vue-router'
 
@@ -9,32 +9,35 @@ import { RouteRecordRaw } from 'vue-router'
  */
 export default defineComponent({
     name: 'LayoutMenu',
-    components: {
-    },
-    props: {
-        routes: Array<RouteRecordRaw>
-    },
     methods: {
-        getNavMenuItems(item: Array<RouteRecordRaw>) {
-            return item.map(item => {
+        /**
+         * 单菜单
+         * @param routes 路由表
+         */
+        getNavMenuItems(routes: Array<RouteRecordRaw> = []) {
+            return routes.map(item => {
                 if (item.children && item.children.length > 1) {
                     return this.getSubMenuOrItem(item)
                 }
                 return  (
                     <a-menu-item key={item.path}>
-                        <router-link to={item.path}>{item.meta ? item.meta.title : item.name}</router-link>
+                        <router-link class="nav-link"  to={item.path}>{item.meta ? item.meta.title : item.name}</router-link>
                     </a-menu-item>
                 )
 
             })
         },
-        getSubMenuOrItem( item: RouteRecordRaw ) {
-            if (!item.children) {
+        /**
+         * 多级菜单
+         * @param route 路由
+         */
+        getSubMenuOrItem( route: RouteRecordRaw ) {
+            if (!route.children) {
                 return
             }
             return (
-                <a-sub-menu title={item.name} key={item.path}>
-                    { this.getNavMenuItems(item.children)}
+                <a-sub-menu title={route.name} key={route.path}>
+                    { this.getNavMenuItems(route.children)}
                 </a-sub-menu>
             )
         }

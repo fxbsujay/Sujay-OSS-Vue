@@ -1,7 +1,7 @@
 <template>
   <a-layout class="layout">
     <a-layout-header>
-      <div class="layout-logo"><h1>LOGO</h1></div>
+      <div class="layout-logo"><h1>SUSU - OSS</h1></div>
       <a-menu
           v-model:selectedKeys="selectedKeys"
           theme="light"
@@ -10,14 +10,7 @@
        <layout-menu ></layout-menu>
       </a-menu>
     </a-layout-header>
-    <a-layout-content>
-      <a-breadcrumb style="margin: 16px 0">
-        <a-breadcrumb-item>Home</a-breadcrumb-item>
-        <a-breadcrumb-item>List</a-breadcrumb-item>
-        <a-breadcrumb-item>App</a-breadcrumb-item>
-      </a-breadcrumb>
-      <app-main></app-main>
-    </a-layout-content>
+    <layout-content></layout-content>
     <a-layout-footer >
       Ant Design ©2018 Created by Ant UED
     </a-layout-footer>
@@ -27,22 +20,23 @@
 
 <script lang="ts">
 import { ref, defineComponent } from 'vue'
-import AppMain from './AppMain'
 import { AsyncRoutes } from '../router'
 import { RouteRecordRaw } from 'vue-router'
-import LayoutMenu from "./LayoutMenu";
+import LayoutMenu from '../components/LayoutMenu'
+import LayoutContent from '../components/LayoutContent'
+import 'ant-design-vue/es/breadcrumb/style/css'
 export default defineComponent({
   name: "Layout",
   components: {
-    AppMain,
-    LayoutMenu
+    LayoutMenu,
+    LayoutContent
   },
 
   setup() {
     const routes = ref<RouteRecordRaw[]>(AsyncRoutes)
     return {
       routes,
-      selectedKeys: ref<string[]>(['8']),
+      selectedKeys: ref<string[]>([]),
     }
   }
 })

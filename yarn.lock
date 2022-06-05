@@ -1562,9 +1562,9 @@
   "version" "2.1.2"
 
 "sass@*":
-  "integrity" "sha512-fSzYTbr7z8oQnVJ3Acp9hV80dM1fkMN7mSD/25mpcct9F7FPBMOI8krEYALgU1aZoqGhQNhTPsuSmxjnIvAm4Q=="
-  "resolved" "https://registry.npmjs.org/sass/-/sass-1.52.1.tgz"
-  "version" "1.52.1"
+  "integrity" "sha512-mfHB2VSeFS7sZlPv9YohB9GB7yWIgQNTGniQwfQ04EoQN0wsQEv7SwpCwy/x48Af+Z3vDeFXz+iuXM3HK/phZQ=="
+  "resolved" "https://registry.npmjs.org/sass/-/sass-1.52.2.tgz"
+  "version" "1.52.2"
   dependencies:
     "chokidar" ">=3.0.0 <4.0.0"
     "immutable" "^4.0.0"

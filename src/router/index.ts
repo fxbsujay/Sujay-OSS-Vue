@@ -18,7 +18,7 @@ const moduleRoutes: Array<RouteRecordRaw> = [
     {
         path: '/',
         component: Layout,
-        redirect: '/home',
+        redirect: '/file',
         meta: {
             title: '首页',
             icon: '#icondashboard',
@@ -26,8 +26,8 @@ const moduleRoutes: Array<RouteRecordRaw> = [
         },
         children: [
             {
-                path: 'home',
-                component: () => import('../views/table/table.vue'),
+                path: 'file',
+                component: () => import('../views/file/table.vue'),
                 name: 'Home',
                 meta: {
                     title: '首页',
