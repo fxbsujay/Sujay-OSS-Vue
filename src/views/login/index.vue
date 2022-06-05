@@ -33,7 +33,7 @@
 <script lang="ts">
 import { UserOutlined, InfoCircleOutlined } from '@ant-design/icons-vue'
 import { defineComponent, ref,toRefs,toRef,reactive } from 'vue'
-import ARow from "ant-design-vue/es/grid/Row"
+
 import './index.less'
 import { LoginModel } from '../../model/UserModel'
 import { useStore } from 'vuex'
@@ -43,8 +43,7 @@ export default defineComponent({
   name: 'Login',
   components: {
     UserOutlined,
-    InfoCircleOutlined,
-    ARow
+    InfoCircleOutlined
   },
 
   setup: function () {

@@ -11,6 +11,8 @@ const https = (hasToken: Boolean = true) => {
   const config: HttpClientConfig = {
     baseURL: 'http://localhost:4000/api',
     clickInterval: 1000,
+    timeout: 5000,
+    timeoutErrorMessage: '请求超时',
     headers: {
       [Keys.tokenKey]: hasToken ? useStore().state.app.token : ''
     }

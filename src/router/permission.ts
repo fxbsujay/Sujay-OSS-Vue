@@ -3,6 +3,7 @@ import store from "../store";
 import { getToken } from '../utils/cookies'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
+
 /**
  * @description 路由守卫
  * @author fxbsujay@gmail.com

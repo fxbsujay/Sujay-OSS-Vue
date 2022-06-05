@@ -6,22 +6,31 @@ import Layout from "../layout/index.vue"
  * @author fxbsujay@gmail.com
  * @version 13:24 2022/6/3
  */
-const routes: Array<RouteRecordRaw> = [
+const constantRoutes: Array<RouteRecordRaw> = [
     {
         path: '/login',
+        name: 'Login',
         component: () => import('../views/login/index.vue')
-    },
+    }
+]
+
+const moduleRoutes: Array<RouteRecordRaw> = [
     {
         path: '/',
         component: Layout,
-        redirect: '/dashboard',
+        redirect: '/home',
+        meta: {
+            title: '首页',
+            icon: '#icondashboard',
+            affix: true
+        },
         children: [
             {
-                path: 'dashboard',
-                component: () => import(/* webpackChunkName: "dashboard" */ '../views/table/table.vue'),
-                name: 'Dashboard',
+                path: 'home',
+                component: () => import('../views/table/table.vue'),
+                name: 'Home',
                 meta: {
-                    title: 'dashboard',
+                    title: '首页',
                     icon: '#icondashboard',
                     affix: true
                 }
@@ -30,9 +39,31 @@ const routes: Array<RouteRecordRaw> = [
     }
 ]
 
+
+
+const routes: Array<RouteRecordRaw> = [
+    ...constantRoutes,
+    ...moduleRoutes
+]
+
 const router = createRouter({
     history: createWebHistory(),
     routes
 })
 
 export default router
+
+const filterAsyncRoutes = (routes: RouteRecordRaw[]) => {
+    const res: RouteRecordRaw[] = []
+    routes.forEach(route => {
+        const r = { ...route }
+        if (r.children) {
+            r.children = filterAsyncRoutes(r.children)
+        }
+        res.push(r)
+
+    })
+    return res
+}
+
+export const AsyncRoutes = filterAsyncRoutes(moduleRoutes)

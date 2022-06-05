@@ -1,5 +1,6 @@
 <template>
   <div>Content</div>
+  <router-link to="/fref">A</router-link>
 </template>
 
 <script lang="ts">

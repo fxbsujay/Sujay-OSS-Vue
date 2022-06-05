@@ -2,11 +2,37 @@
   margin-top: 0;
   text-align: justify;
 }
+.layout-logo {
+  width: 120px;
+  height: 100%;
+  float: left;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.layout-logo h1 {
+  color: #1e65ce;
+  font-size: 20px;
+  margin-bottom: 1px;
+  font-weight: bolder;
+}
 .app-main {
   min-height: calc(100vh - 170px);
   background: #fff;
   padding: 24px;
 }
+.ant-layout-header {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  padding: 0;
+  background: #fff;
+}
+.ant-layout-content {
+  padding: 0 50px;
+  margin-top: 64px;
+}
 .ant-layout-footer {
   padding: 15px 50px;
+  text-align: center;
 }

@@ -7,12 +7,12 @@ export default defineComponent({
      *      return <div>APPMAIN</div>
      *   }
      */
-    setup() {
-        return () => (
+    render() {
+        return  (
             <div class="app-main">
+                <a-button type="primary">Primary Button</a-button>
                 <router-view/>
             </div>
-
         )
     }
 })

@@ -1,5 +1,5 @@
 import {ContentType, Method, RequestParams} from './type'
-import axios, {AxiosInstance, AxiosRequestConfig} from 'axios'
+import axios, {AxiosError, AxiosInstance, AxiosRequestConfig} from 'axios'
 import {Convert} from './json2Model'
 import DuplicateRequest from './duplicate'
 import {message} from 'ant-design-vue'
@@ -96,14 +96,14 @@ export default class HttpClient {
         if (res.status >= 200 && res.status < 300) {
           let {code, data: result,msg } = Convert.jsonToModel(data) as RootObject<T>
           if (code !== 200) {
-            return Promise.reject(msg);
+            return Promise.reject(new AxiosError(msg));
           }
           return result as T;
         }
-        return Promise.reject('网络异常');
+        return Promise.reject(new AxiosError('网络异常 ！'));
       })
       .catch(async error => {
-        message.error(error)
+        message.error(error.message)
         return Promise.reject();
       });
   }

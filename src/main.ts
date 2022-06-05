@@ -4,4 +4,6 @@ import router from './router'
 import store from "./store"
 import './styles/index.less'
 import './router/permission'
-createApp(App).use(router).use(store).mount('#app')
+import Antd from 'ant-design-vue';
+
+createApp(App).use(router).use(store).use(Antd).mount('#app')
