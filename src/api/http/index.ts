@@ -94,7 +94,7 @@ export default class HttpClient {
       .then(res => {
         const data: string = JSON.stringify(res.data);
         if (res.status >= 200 && res.status < 300) {
-          let {code, data: result,msg } = Convert.jsonToModel(data) as RootObject<T>
+          let {code, data: result, msg } = Convert.jsonToModel(data) as RootObject<T>
           if (code !== 200) {
             return Promise.reject(new AxiosError(msg));
           }

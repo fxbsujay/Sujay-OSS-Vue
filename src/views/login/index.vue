@@ -22,7 +22,7 @@
           </a-input>
           <label></label>
           <a-input-password v-model:value="state.password" placeholder="密码" />
-          <a-button type="primary" @click="login" :loading="loading">登录</a-button>
+          <a-button type="primary" @click="login" :loading="loading">{{ $t('login.title')}}</a-button>
         </div>
       </div>
     </div>

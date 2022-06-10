@@ -9,6 +9,12 @@ class Keys {
    * 请求Token
    */
   static tokenKey = 'x-token'
+
+  /**
+   * i18n
+   */
+  static language = 'lang-code'
+
 }
 
 export default Keys
