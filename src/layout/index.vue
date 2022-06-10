@@ -2,7 +2,7 @@
   <a-layout class="layout">
     <a-layout-header>
       <div class="layout-logo">
-        <h1>SUSU - {{ $t('login.title') }}</h1>
+        <h1>SUSU - OSS</h1>
       </div>
       <div class="layout-menu">
         <a-menu
