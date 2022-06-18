@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue'
-import { AsyncRoutes } from '../router'
+import { AsyncRoutes } from '@/router'
 import { RouteRecordRaw } from 'vue-router'
 
 /**

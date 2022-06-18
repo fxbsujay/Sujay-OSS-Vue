@@ -1,6 +1,6 @@
 import { RequestParams } from './http'
 import https from './http/https'
-import { LoginModel } from '../model/UserModel'
+import { LoginModel } from '@/model/UserModel'
 import { Method, ContentType } from './http'
 
 /**

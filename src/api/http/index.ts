@@ -4,7 +4,7 @@ import {Convert} from './json2Model'
 import DuplicateRequest from './duplicate'
 import {message} from 'ant-design-vue'
 import 'ant-design-vue/es/message/style/css'
-import {RootObject} from '../../model/RootObject'
+import { RootObject } from '@/model/BaseModel'
 
 /**
  * <p>Axios封装</p>

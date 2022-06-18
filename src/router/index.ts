@@ -27,7 +27,7 @@ const moduleRoutes: Array<RouteRecordRaw> = [
         children: [
             {
                 path: 'file',
-                component: () => import('../views/file/table.vue'),
+                component: () => import('../views/room/index'),
                 name: 'Home',
                 meta: {
                     title: '首页',

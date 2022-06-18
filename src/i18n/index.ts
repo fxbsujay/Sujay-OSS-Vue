@@ -14,7 +14,6 @@ const msg = {
 
 const getCurrentLanguage = () => {
     const UALang = navigator.language
-    console.log(getLang())
     return getLang() ? getLang() : UALang.indexOf('zh') !== -1 ? 'zh' : 'en'
 }
 

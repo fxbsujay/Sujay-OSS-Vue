@@ -1,9 +1,9 @@
 <template>
     <a-dropdown>
       <a class="ant-dropdown-link">
-        <a-avatar size="large">
-          <template #icon><UserOutlined/></template>
-        </a-avatar>
+        <svg class="icon svg-icon" aria-hidden="true">
+          <use xlink:href="#icon-wogerenziliao"></use>
+        </svg>
       </a>
       <template #overlay>
         <a-menu>
@@ -20,7 +20,7 @@ import { defineComponent, reactive, Ref, toRefs } from 'vue'
 import { UserOutlined,DribbbleOutlined } from '@ant-design/icons-vue'
 import { useStore } from 'vuex'
 import { UserActionTypes } from '@/store/modules/app'
-
+import '@/assets/fonts/avatar'
 /**
  * @description 头像组件
  * @author fxbsujay@gmail.com

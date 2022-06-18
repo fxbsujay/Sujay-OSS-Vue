@@ -1,6 +1,6 @@
-import { loginRequest } from '../../api/user'
+import { loginRequest } from '@/api/user'
 import router from '../../router'
-import {setToken, getToken, removeToken, getLang} from '../../utils/cookies'
+import {setToken, getToken, removeToken, getLang} from '@/utils/cookies'
 
 export enum UserActionTypes {
     LOGIN = 'LOGIN',

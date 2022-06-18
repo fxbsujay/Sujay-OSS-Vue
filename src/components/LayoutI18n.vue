@@ -1,7 +1,10 @@
 <template>
+
   <a-dropdown >
     <a class="ant-dropdown-link">
-      <DribbbleOutlined style="font-size: 30px;margin-top: 22px"/>
+      <svg class="icon svg-icon" aria-hidden="true">
+        <use xlink:href="#icon-yuyanqiehuan"></use>
+      </svg>
     </a>
     <template #overlay>
       <a-menu v-model:selectedKeys="selectedKeys" @click="setLanguage">
@@ -17,19 +20,16 @@
 </template>
 
 <script lang="ts">
-import { DribbbleOutlined } from '@ant-design/icons-vue'
+
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { setLang } from "@/utils/cookies";
-import {MenuProps} from "ant-design-vue";
+import { MenuProps } from "ant-design-vue";
+import '@/assets/fonts/en'
 export default {
   name: "LayoutI18n",
-  components: {
-    DribbbleOutlined
-  },
   setup() {
     const { locale } = useI18n()
-
     const selectedKeys = ref<string[]>([locale.value])
     const setLanguage: MenuProps['onClick'] = ({ key: value }) => {
       setLang(value)
@@ -43,7 +43,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-
-</style>

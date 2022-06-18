@@ -1,10 +1,14 @@
 <template>
-
+  <a-table :columns="columns" :data-source="data" :row-selection="rowSelection" />
 </template>
 
 <script lang="ts">
 export default {
-  name: "Table"
+  name: "Table",
+
+  setup() {
+
+  }
 }
 </script>
 

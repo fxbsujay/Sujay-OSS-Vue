@@ -3,7 +3,7 @@
  * @author fxbsujay@gmail.com
  */
 export interface UserInfoModel {
-    id: number
+    id: bigint
     username: string
     password: string
     name: string
