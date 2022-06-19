@@ -6,7 +6,7 @@
 import HttpClient, { HttpClientConfig } from './index'
 import Keys from '../../constant/key'
 
-import {getToken} from "@/utils/cookies";
+import { getToken } from '@/utils/cookies'
 
 const https = (hasToken: Boolean = true) => {
   const config: HttpClientConfig = {
@@ -15,7 +15,7 @@ const https = (hasToken: Boolean = true) => {
     timeout: 5000,
     timeoutErrorMessage: '请求超时',
     headers: {
-      [Keys.tokenKey]: hasToken ? getToken() : ''
+      [Keys.tokenKey]: hasToken ? getToken() as string : ''
     }
   }
   return new HttpClient(config)

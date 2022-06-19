@@ -11,7 +11,6 @@ import { RoomConstant } from '@/constant/sys-constant'
  */
 class PageParams extends QueryParams{
     name: string = ''
-
 }
 
 const columns: TableColumnType<RoomMode>[] = [
@@ -53,11 +52,16 @@ export default defineComponent({
       }
     },
     setup () {
+
         const data = reactive({
             pageData: new PageData(),
             pageParams: new PageParams(),
             loading: false
         })
+
+        /**
+         * 分页查询
+         */
         const queryList = () => {
             data.loading = true
             page(data.pageParams).then(res => {
@@ -71,10 +75,35 @@ export default defineComponent({
             })
         }
 
+        /**
+         * 分页操作
+         * @param pagination
+         */
        const tablePaginationChange = (pagination: TablePaginationConfig) => {
             data.pageParams.page = pagination.current
             data.pageParams.limit = pagination.pageSize
             queryList()
+        }
+
+        const onSearch = (searchValue: string) => {
+            console.log('use value', searchValue);
+            console.log('or use this.value', data.pageParams.name);
+        };
+        /**
+         * 操作烂
+         */
+        const actionBar = () => {
+          return (
+              <a-space align="center">
+                  <a-button type="primary">创建空间</a-button>
+                  <a-input-search
+                      v-model:value={ data.pageParams.name }
+                      placeholder="请输入空间名称"
+                      enter-button
+                      onSearch={ queryList }
+                  />
+              </a-space>
+          )
         }
 
         queryList()
@@ -82,6 +111,7 @@ export default defineComponent({
         const tabel = () => {
             return (
                 <div>
+                    { actionBar() }
                     <a-spin
                         spinning={ data.loading }
                     >
