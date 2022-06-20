@@ -76,6 +76,14 @@ export default defineComponent({
         }
 
         /**
+         * 新增修改
+         * @param id ID
+         */
+        const saveAndUpdate = ( id?: number ) => {
+          
+        }
+
+        /**
          * 分页操作
          * @param pagination
          */
@@ -84,18 +92,13 @@ export default defineComponent({
             data.pageParams.limit = pagination.pageSize
             queryList()
         }
-
-        const onSearch = (searchValue: string) => {
-            console.log('use value', searchValue);
-            console.log('or use this.value', data.pageParams.name);
-        };
         /**
          * 操作烂
          */
         const actionBar = () => {
           return (
               <a-space align="center">
-                  <a-button type="primary">创建空间</a-button>
+                  <a-button type="primary" onClick={ saveAndUpdate } >创建空间</a-button>
                   <a-input-search
                       v-model:value={ data.pageParams.name }
                       placeholder="请输入空间名称"
