@@ -40,7 +40,13 @@ const columns: TableColumnType<RoomMode>[] = [
         title: '修改日期',
         dataIndex: 'updateDate',
         align: 'center'
-    }
+    },
+    {
+        dataIndex: 'range',
+        title: 'aaaaa',
+        align: 'right',
+        slots: { customRender: 'range' },
+    },
 
 ]
 
@@ -132,6 +138,13 @@ export default defineComponent({
                                 showQuickJumper: true,
                             }}
                             onChange={ tablePaginationChange }
+                            v-slots={{
+                                range: (scope: any) => {
+                                    return (
+                                        <trend flag={scope.record.status === 0 ? 'up' : 'down'}>{scope.text}%</trend>
+                                    );
+                                },
+                            }}
                         >
                         </a-table>
                     </a-spin>
