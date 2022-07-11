@@ -30,13 +30,12 @@
 
 <script lang="ts">
 import { ref, defineComponent } from 'vue'
-import { AsyncRoutes } from '@/router'
-import { RouteRecordRaw } from 'vue-router'
 import LayoutMenu from '../components/LayoutMenu'
 import LayoutContent from '../components/LayoutContent'
 import LayoutAvatar from '../components/LayoutAvatar.vue'
 import LayoutI18n from '@/components/LayoutI18n.vue'
 import 'ant-design-vue/es/breadcrumb/style/css'
+import { useRoute } from 'vue-router'
 export default defineComponent({
   name: "Layout",
   components: {
@@ -47,10 +46,8 @@ export default defineComponent({
   },
 
   setup() {
-    const routes = ref<RouteRecordRaw[]>(AsyncRoutes)
     return {
-      routes,
-      selectedKeys: ref<string[]>([]),
+      selectedKeys: ref<string[]>([useRoute().name as string]),
     }
   }
 })

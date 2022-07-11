@@ -35,9 +35,9 @@ import { UserOutlined, InfoCircleOutlined } from '@ant-design/icons-vue'
 import { defineComponent, ref,toRefs,toRef,reactive } from 'vue'
 
 import './index.less'
-import { LoginModel } from '../../model/UserModel'
+import { LoginModel } from '@/model/UserModel'
 import { useStore } from 'vuex'
-import {UserActionTypes} from '../../store/modules/app'
+import {UserActionTypes} from '@/store/modules/app'
 
 export default defineComponent({
   name: 'Login',

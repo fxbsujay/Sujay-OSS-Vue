@@ -15,12 +15,12 @@ export default defineComponent({
          * @param routes 路由表
          */
         getNavMenuItems(routes: Array<RouteRecordRaw> = []) {
-            return routes.map(item => {
+            return routes.map( (item,index) => {
                 if (item.children && item.children.length > 1) {
                     return this.getSubMenuOrItem(item)
                 }
                 return  (
-                    <a-menu-item key={item.path}>
+                    <a-menu-item key={item.name}>
                         <router-link class="nav-link"  to={item.path}>{item.meta ? item.meta.title : item.name}</router-link>
                     </a-menu-item>
                 )
@@ -36,7 +36,7 @@ export default defineComponent({
                 return
             }
             return (
-                <a-sub-menu title={route.name} key={route.path}>
+                <a-sub-menu title={route.meta.title} key={route.name}>
                     { this.getNavMenuItems(route.children)}
                 </a-sub-menu>
             )
